@@ -2,6 +2,14 @@ int mapSize = 5;
 int unitSize = 100;
 int cX, cY;
 
+int[][] map = {
+  {0, 0, 0, 1, 0},
+  {1, 0, 0, 1, 0},
+  {1, 0, 1, 1, 0},
+  {0, 0, 0, 0, 0},
+  {0, 1, 0, 1, 1}
+};
+
 void setup() {
   size(500, 500);
   
@@ -22,11 +30,17 @@ void draw() {
 
 void keyPressed() {
   if (key == CODED) {
+    int nX = cX;
+    int nY = cY;
     switch (keyCode) {
-      case UP:    cY--;  break;
-      case DOWN:  cY++;  break;
-      case LEFT:  cX--;  break;
-      case RIGHT: cX++;  break;
+      case UP:    nY--;  break;
+      case DOWN:  nY++;  break;
+      case LEFT:  nX--;  break;
+      case RIGHT: nX++;  break;
+    }
+    if (map[nY][nX] == 0) {
+      cX = nX;
+      cY = nY;
     }
   }
 }
