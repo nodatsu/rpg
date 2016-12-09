@@ -65,7 +65,7 @@ void keyPressed() {
 void mapInit() {
   for (int y = 0; y < mapSize; y++) {
     for (int x = 0; x < mapSize; x++) {     
-      map[y][x]=int(random(0, 2));
+      map[y][x]=int(random(0, 1.2));
     }
   }
 
