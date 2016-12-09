@@ -1,13 +1,15 @@
-int mapSize = 5;
+int mapSize = 7;
 int unitSize = 100;
 int cX, cY;
 
 int[][] map = {
-  {0, 0, 0, 1, 0},
-  {1, 0, 0, 1, 0},
-  {1, 0, 0, 1, 0},
-  {0, 0, 0, 0, 0},
-  {0, 1, 0, 1, 1}
+  {9,9, 9, 9, 9, 9,9},
+  {9,0, 0, 0, 1, 0,9},
+  {9,1, 0, 0, 1, 0,9},
+  {9,1, 0, 0, 1, 0,9},
+  {9,0, 0, 0, 0, 0,9},
+  {9,0, 1, 0, 1, 1,9},
+  {9,9, 9, 9, 9, 9,9}
 };
 
 void setup() {
@@ -24,6 +26,7 @@ void draw() {
       switch (map[y][x]) {
         case 0:  fill(0, 255, 0);  break;
         case 1:  fill(0, 0, 255);  break;
+        case 9:  fill(0);break;
       }
       rect(x * unitSize, y * unitSize, unitSize, unitSize);
     }
