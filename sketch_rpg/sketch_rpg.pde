@@ -16,11 +16,13 @@ void setup() {
   size(500, 500);
   
   ellipseMode(CORNER);
-  cX = 2;
-  cY = 2;
+  cX = 3;
+  cY = 3;
 }
 
 void draw() {
+  translate(-unitSize,-unitSize);
+  translate(-(cX-3)*unitSize,-(cY-3)*unitSize);
   for (int y = 0; y < mapSize; y++) {
     for (int x = 0; x < mapSize; x++) {
       switch (map[y][x]) {
