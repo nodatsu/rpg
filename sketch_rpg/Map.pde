@@ -10,7 +10,7 @@ class Map {
     ellipseMode(CORNER);
     cX = mapSize/2;
     cY = mapSize/2;
-    mapInit();
+    init();
   }
 
   void update() {  
@@ -24,6 +24,9 @@ class Map {
           break;
         case 1:  
           fill(0, 0, 255);  
+          break;
+        case 2:
+          fill(255, 255, 0);
           break;
         case 9:  
           fill(0);
@@ -54,14 +57,17 @@ class Map {
         nX++;  
         break;
       }
-      if (map[nY][nX] == 0) {
+      if (map[nY][nX] == 0 || map[nY][nX] == 2) {
         cX = nX;
         cY = nY;
+        if (map[nY][nX] == 2) {
+          println("イベント");
+        }
       }
     }
   }
 
-  void mapInit() {
+  void init() {
     for (int y = 0; y < mapSize; y++) {
       for (int x = 0; x < mapSize; x++) {     
         map[y][x]=int(random(0, 1.2));
@@ -77,5 +83,7 @@ class Map {
       map[y][mapSize-1]=9;
     }
     map[cX][cY] = 0;
+
+    map[5][9] = 2;
   }
 }
