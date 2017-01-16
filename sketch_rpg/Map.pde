@@ -5,12 +5,15 @@ class Map {
 
   int[][] map = new int[mapSize][mapSize];
 
+  PImage charTex;
 
   Map() {
     ellipseMode(CORNER);
     cX = mapSize/2;
     cY = mapSize/2;
     init();
+    
+    charTex = loadImage("mae.png");
   }
 
   void update() {  
@@ -36,10 +39,10 @@ class Map {
       }
     }
     // キャラ表示(円)
-    fill(255, 0, 0);
-    ellipse(cX * unitSize, cY * unitSize, unitSize, unitSize);
+    //fill(255, 0, 0);
+    //ellipse(cX * unitSize, cY * unitSize, unitSize, unitSize);
     // キャラ表示(絵)
-    
+    image(charTex, cX * unitSize, cY * unitSize, unitSize, unitSize);
   }
 
   void input() {  
