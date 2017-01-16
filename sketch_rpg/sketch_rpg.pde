@@ -1,7 +1,7 @@
 Map map;
 
 void setup() {
-  size(500, 500);
+  size(500, 500, P2D);
 
   map = new Map();
 }

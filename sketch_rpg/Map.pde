@@ -6,6 +6,7 @@ class Map {
   int[][] map = new int[mapSize][mapSize];
 
   PImage charTex;
+  int dir;
 
   Map() {
     ellipseMode(CORNER);
@@ -13,7 +14,8 @@ class Map {
     cY = mapSize/2;
     init();
     
-    charTex = loadImage("mae.png");
+    charTex = loadImage("general man 01.png");
+    dir = 0;
   }
 
   void update() {  
@@ -42,7 +44,14 @@ class Map {
     //fill(255, 0, 0);
     //ellipse(cX * unitSize, cY * unitSize, unitSize, unitSize);
     // キャラ表示(絵)
-    image(charTex, cX * unitSize, cY * unitSize, unitSize, unitSize);
+    //image(charTex, cX * unitSize, cY * unitSize, unitSize, unitSize);
+    beginShape();
+    texture(charTex);
+    vertex(cX * unitSize, cY * unitSize,             dir * 24,  0);
+    vertex((cX + 1) * unitSize, cY * unitSize,       (dir + 1) * 24,  0);
+    vertex((cX + 1) * unitSize, (cY + 1) * unitSize, (dir + 1) * 24, 24);
+    vertex(cX * unitSize, (cY + 1) * unitSize,       dir * 24, 24);
+    endShape();
   }
 
   void input() {  
@@ -50,16 +59,20 @@ class Map {
       int nX = cX;
       int nY = cY;
       switch (keyCode) {
-      case UP:    
+      case UP: 
+        dir = 1;
         nY--;  
         break;
-      case DOWN:  
+      case DOWN:
+        dir = 0;
         nY++;  
         break;
-      case LEFT:  
+      case LEFT:
+        dir = 2;
         nX--;  
         break;
-      case RIGHT: 
+      case RIGHT:
+        dir = 3;
         nX++;  
         break;
       }
