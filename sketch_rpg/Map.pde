@@ -35,8 +35,11 @@ class Map {
         rect(x * unitSize, y * unitSize, unitSize, unitSize);
       }
     }
+    // キャラ表示(円)
     fill(255, 0, 0);
     ellipse(cX * unitSize, cY * unitSize, unitSize, unitSize);
+    // キャラ表示(絵)
+    
   }
 
   void input() {  
