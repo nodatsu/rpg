@@ -7,6 +7,7 @@ class Map {
 
   PImage charTex;
   int dir;
+  int pose;
 
   Map() {
     ellipseMode(CORNER);
@@ -16,6 +17,7 @@ class Map {
     
     charTex = loadImage("general man 01.png");
     dir = 0;
+    pose = 0;
   }
 
   void update() {  
@@ -47,10 +49,10 @@ class Map {
     //image(charTex, cX * unitSize, cY * unitSize, unitSize, unitSize);
     beginShape();
     texture(charTex);
-    vertex(cX * unitSize, cY * unitSize,             dir * 24,  0);
-    vertex((cX + 1) * unitSize, cY * unitSize,       (dir + 1) * 24,  0);
-    vertex((cX + 1) * unitSize, (cY + 1) * unitSize, (dir + 1) * 24, 24);
-    vertex(cX * unitSize, (cY + 1) * unitSize,       dir * 24, 24);
+    vertex(cX * unitSize, cY * unitSize,             dir * 24,       pose * 24);
+    vertex((cX + 1) * unitSize, cY * unitSize,       (dir + 1) * 24, pose * 24);
+    vertex((cX + 1) * unitSize, (cY + 1) * unitSize, (dir + 1) * 24, (pose + 1) * 24);
+    vertex(cX * unitSize, (cY + 1) * unitSize,       dir * 24,       (pose + 1) * 24);
     endShape();
   }
 
@@ -79,6 +81,8 @@ class Map {
       if (map[nY][nX] == 0 || map[nY][nX] == 2) {
         cX = nX;
         cY = nY;
+        pose++;
+        pose %= 2;
         if (map[nY][nX] == 2) {
           println("イベント");
         }
