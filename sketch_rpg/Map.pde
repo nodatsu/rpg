@@ -42,17 +42,13 @@ class Map {
         rect(x * unitSize, y * unitSize, unitSize, unitSize);
       }
     }
-    // キャラ表示(円)
-    //fill(255, 0, 0);
-    //ellipse(cX * unitSize, cY * unitSize, unitSize, unitSize);
-    // キャラ表示(絵)
-    //image(charTex, cX * unitSize, cY * unitSize, unitSize, unitSize);
+    // キャラ表示
     beginShape();
     texture(charTex);
-    vertex(cX * unitSize, cY * unitSize,             dir * 24,       pose * 24);
-    vertex((cX + 1) * unitSize, cY * unitSize,       (dir + 1) * 24, pose * 24);
+    vertex( cX      * unitSize,  cY      * unitSize,  dir      * 24,  pose      * 24);
+    vertex((cX + 1) * unitSize,  cY      * unitSize, (dir + 1) * 24,  pose      * 24);
     vertex((cX + 1) * unitSize, (cY + 1) * unitSize, (dir + 1) * 24, (pose + 1) * 24);
-    vertex(cX * unitSize, (cY + 1) * unitSize,       dir * 24,       (pose + 1) * 24);
+    vertex( cX      * unitSize, (cY + 1) * unitSize,  dir      * 24, (pose + 1) * 24);
     endShape();
   }
 
