@@ -6,6 +6,7 @@ class Map {
   int[][] map = new int[mapSize][mapSize];
 
   PImage charTex;
+  PImage gTex;
   int dir;
   int pose;
 
@@ -14,23 +15,37 @@ class Map {
     cX = mapSize/2;
     cY = mapSize/2;
     init();
-    
+
     charTex = loadImage("general man 01.png");
+    gTex = loadImage("map.png");
     dir = 0;
     pose = 0;
   }
 
   void update() {  
+    noStroke();
     translate(-unitSize, -unitSize);
     translate(-(cX-3)*unitSize, -(cY-3)*unitSize);
     for (int y = 0; y < mapSize; y++) {
       for (int x = 0; x < mapSize; x++) {
         switch (map[y][x]) {
         case 0:  
-          fill(0, 255, 0);  
+          beginShape();
+          texture(gTex);
+          vertex(  x     * unitSize, y      * unitSize, 0      * 24, 0     * 24);
+          vertex(( x+ 1) * unitSize, y      * unitSize, (0 + 1) * 24, 0      * 24);
+          vertex((x + 1) * unitSize, (y + 1) * unitSize, (0 + 1) * 24, (0 + 1) * 24);
+          vertex(  x     * unitSize, (y + 1) * unitSize, 0      * 24, (0 + 1) * 24);
+          endShape();
           break;
         case 1:  
-          fill(0, 0, 255);  
+          beginShape();
+          texture(gTex);
+          vertex(  x     * unitSize, y      * unitSize, 11      * 24, 1    * 24);
+          vertex(( x+ 1) * unitSize, y      * unitSize, (11 + 1) * 24, 1      * 24);
+          vertex((x + 1) * unitSize, (y + 1) * unitSize, (11 + 1) * 24, (1 + 1) * 24);
+          vertex(  x     * unitSize, (y + 1) * unitSize, 11     * 24, (1 + 1) * 24);
+          endShape();
           break;
         case 2:
           fill(255, 255, 0);
@@ -39,16 +54,15 @@ class Map {
           fill(0);
           break;
         }
-        rect(x * unitSize, y * unitSize, unitSize, unitSize);
       }
     }
     // キャラ表示
     beginShape();
     texture(charTex);
-    vertex( cX      * unitSize,  cY      * unitSize,  dir      * 24,  pose      * 24);
-    vertex((cX + 1) * unitSize,  cY      * unitSize, (dir + 1) * 24,  pose      * 24);
+    vertex( cX      * unitSize, cY      * unitSize, dir      * 24, pose      * 24);
+    vertex((cX + 1) * unitSize, cY      * unitSize, (dir + 1) * 24, pose      * 24);
     vertex((cX + 1) * unitSize, (cY + 1) * unitSize, (dir + 1) * 24, (pose + 1) * 24);
-    vertex( cX      * unitSize, (cY + 1) * unitSize,  dir      * 24, (pose + 1) * 24);
+    vertex( cX      * unitSize, (cY + 1) * unitSize, dir      * 24, (pose + 1) * 24);
     endShape();
   }
 
